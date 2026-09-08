@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->date('birth_date');
             $table->unsignedTinyInteger('year_level')->default(1);
-            $table->foreignID('department_id')->contrained()->cascadeOnDelete();
+            $table->foreignID('department_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
