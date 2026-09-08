@@ -10,15 +10,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class CourseFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            //
+            'code'  => strtoupper(fake()->unique()->bothify('??###')), // CS101
+            'title' => fake()->sentence(3),
+            'units' => fake()->randomElement([2, 3]),
         ];
     }
 }
+
