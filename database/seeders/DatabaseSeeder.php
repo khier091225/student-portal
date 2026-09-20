@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Course;
 use App\Models\Student;
-
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,12 +18,12 @@ class DatabaseSeeder extends Seeder
     {
         // 1. Departments first (students need them)
         $this->call(DepartmentSeeder::class);
- 
+
         // 2. Courses
         $courses = Course::factory(8)->create();
- 
+
         // 3. Students, each enrolled in 3 random courses with a random grade
-        Student::factory(30)->create()->each(function (Student $student) use ($courses) {
+        Student::factory(30)->create()->each(function (Student $student) use ($courses): void {
             $picked = $courses->random(3);
             foreach ($picked as $course) {
                 $student->courses()->attach($course->id, [

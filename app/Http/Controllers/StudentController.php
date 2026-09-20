@@ -13,7 +13,7 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         $students = Student::with('department')->orderBy('last_name')->paginate(10);
 
@@ -24,7 +24,7 @@ class StudentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         $departments = Department::orderBy('name')->get();
 
@@ -55,7 +55,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Student $student): View
     {
         $student->load('department', 'courses');
 
@@ -97,7 +97,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Student $student): RedirectResponse
     {
         $student->delete();
 
