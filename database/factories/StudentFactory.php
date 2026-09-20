@@ -17,6 +17,7 @@ class StudentFactory extends Factory
             'birth_date'     => fake()->dateTimeBetween('-24 years', '-17 years'),
             'year_level'     => fake()->numberBetween(1, 4),
             'department_id'  => Department::inRandomOrder()->first()->id,
+            'phone'          => fake()->numerify('09#########')
         ];
     }
 }
